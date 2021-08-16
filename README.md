@@ -21,7 +21,7 @@ __Optional variables__ that can be overriden for the deployment:
 Example *.tfvars file:
 ```
 resourceGroupName="IPv6Test"
-adminPassword="123Password!"
+adminPassword="************"
 #subnetId="/subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
 ```
 
