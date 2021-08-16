@@ -10,12 +10,12 @@ variable "location" {
 
 variable "linuxComputeCount" {
   description = "Number of Linux VMs to deploy."
-  default     = 1
+  default     = 0
 }
 
 variable "windowsComputeCount" {
   description = "Number of Windows VMs to deploy."
-  default     = 1
+  default     = 2
 }
 
 variable "serverName" {

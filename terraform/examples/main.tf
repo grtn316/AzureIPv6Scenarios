@@ -89,7 +89,19 @@ resource "azurerm_network_security_group" "subnetNSG" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "*"
+    source_address_prefix      = "107.192.0.0/16"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "RDP"
+    priority                   = 1002
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "3389"
+    source_address_prefix      = "107.192.0.0/16"
     destination_address_prefix = "*"
   }
 }
