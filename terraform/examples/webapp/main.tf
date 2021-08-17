@@ -66,6 +66,28 @@ module "createWindowsDatabaseVM" {
 
 }
 
+#Create Windows Desktop
+module "createWindowsDesktopVM" {
+  source = "../../Modules//compute/"
+
+  resourceGroupName           = azurerm_resource_group.rg.name
+  computeCount                = 1
+  serverName                  = "${var.serverName}-WS"
+  location                    = azurerm_resource_group.rg.location
+  zone                        = 2
+  vmSKU                       = var.vmSKU
+  osPublisher                 = "MicrosoftWindowsDesktop"
+  osOffer                     = "Windows-10"
+  osSKU                       = "20h2-pro"
+  osVersion                   = "latest"
+  storageAccountType          = "Premium_LRS"
+  adminUsername               = var.adminUsername
+  adminPassword               = var.adminPassword
+  enableAcceleratedNetworking = true
+  subnetId                    = (length(regexall("virtualNetworks", var.subnetId)) > 0 ? var.subnetId : element(azurerm_subnet.subnet.*.id, 1)) #Skip if existing vnet
+
+}
+
 
 #Create Resource Group
 resource "azurerm_resource_group" "rg" {
